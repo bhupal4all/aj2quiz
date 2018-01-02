@@ -1,0 +1,745 @@
+{
+    "id": 40,
+    "name": "AWS Questions",
+    "description": "AWS Questionair",
+    "pager": {
+        "size": 1
+    },
+    "config": {
+        "shuffleQuestions": false,
+        "allowBack": true,
+        "autoMove": false
+    },
+    "questions": [
+        {
+            "name": "Amazon SWF is designed to help users...\n",
+            "options": [
+                {
+                    "name": "Design graphical user interface interactions\n",
+                    "isAnswer": false,
+                    "questionId": 1,
+                    "id": 10010
+                },
+                {
+                    "name": "Manage user identification and authorization\n",
+                    "isAnswer": false,
+                    "questionId": 1,
+                    "id": 10011
+                },
+                {
+                    "name": "Store Web content\n",
+                    "isAnswer": false,
+                    "questionId": 1,
+                    "id": 10012
+                },
+                {
+                    "name": "Coordinate synchronous and asynchronous tasks which are distributed and fault tolerant.",
+                    "isAnswer": true,
+                    "questionId": 1,
+                    "id": 10013
+                }
+            ],
+            "id": 1,
+            "questionTypeId": 1
+        },
+        {
+            "name": "Can I control if and when MySQL based RDS Instance is upgraded to new supported versions?\n",
+            "options": [
+                {
+                    "name": "No\n",
+                    "isAnswer": false,
+                    "questionId": 2,
+                    "id": 10020
+                },
+                {
+                    "name": "Only in VPC\n",
+                    "isAnswer": false,
+                    "questionId": 2,
+                    "id": 10021
+                },
+                {
+                    "name": "Yes",
+                    "isAnswer": true,
+                    "questionId": 2,
+                    "id": 10022
+                }
+            ],
+            "id": 2,
+            "questionTypeId": 1
+        },
+        {
+            "name": "What does Amazon Elastic Beanstalk provide?\n",
+            "options": [
+                {
+                    "name": "A scalable storage appliance on top of Amazon Web Services.\n",
+                    "isAnswer": false,
+                    "questionId": 3,
+                    "id": 10030
+                },
+                {
+                    "name": "An application container on top of Amazon Web Services.\n",
+                    "isAnswer": true,
+                    "questionId": 3,
+                    "id": 10031
+                },
+                {
+                    "name": "A service by this name doesn't exist.\n",
+                    "isAnswer": false,
+                    "questionId": 3,
+                    "id": 10032
+                },
+                {
+                    "name": "A scalable cluster of EC2 instances.",
+                    "isAnswer": false,
+                    "questionId": 3,
+                    "id": 10033
+                }
+            ],
+            "id": 3,
+            "questionTypeId": 1
+        },
+        {
+            "name": "True or False: When using IAM to control access to your RDS resources, the key names that can be used are case sensitive. For example,\naws:CurrentTime is NOT equivalent to AWS:currenttime.\n",
+            "options": [
+                {
+                    "name": "TRUE\n",
+                    "isAnswer": false,
+                    "questionId": 4,
+                    "id": 10040
+                },
+                {
+                    "name": "FALSE",
+                    "isAnswer": true,
+                    "questionId": 4,
+                    "id": 10041
+                }
+            ],
+            "explanation": "Key names are case-insensitive. For example, aws:CurrentTime is equivalent to AWS:currenttime.\nhttp://docs.aws.amazon.com/directconnect/latest/UserGuide/using_iam.html",
+            "id": 4,
+            "questionTypeId": 1
+        },
+        {
+            "name": "What will be the status of the snapshot until the snapshot is complete.\n",
+            "options": [
+                {
+                    "name": "running\n",
+                    "isAnswer": false,
+                    "questionId": 5,
+                    "id": 10050
+                },
+                {
+                    "name": "working\n",
+                    "isAnswer": false,
+                    "questionId": 5,
+                    "id": 10051
+                },
+                {
+                    "name": "progressing\n",
+                    "isAnswer": false,
+                    "questionId": 5,
+                    "id": 10052
+                },
+                {
+                    "name": "pending",
+                    "isAnswer": true,
+                    "questionId": 5,
+                    "id": 10053
+                }
+            ],
+            "explanation": "http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html",
+            "id": 5,
+            "questionTypeId": 1
+        },
+        {
+            "name": "Can we attach an EBS volume to more than one EC2 instance at the same time?\n",
+            "options": [
+                {
+                    "name": "No\n",
+                    "isAnswer": true,
+                    "questionId": 6,
+                    "id": 10060
+                },
+                {
+                    "name": "Yes.\n",
+                    "isAnswer": false,
+                    "questionId": 6,
+                    "id": 10061
+                },
+                {
+                    "name": "Only EC2-optimized EBS volumes.\n",
+                    "isAnswer": false,
+                    "questionId": 6,
+                    "id": 10062
+                },
+                {
+                    "name": "Only in read mode.",
+                    "isAnswer": false,
+                    "questionId": 6,
+                    "id": 10063
+                }
+            ],
+            "id": 6,
+            "questionTypeId": 1
+        },
+        {
+            "name": "True or False: Automated backups are enabled by default for a new DB Instance.\n",
+            "options": [
+                {
+                    "name": "TRUE\n",
+                    "isAnswer": true,
+                    "questionId": 7,
+                    "id": 10070
+                },
+                {
+                    "name": "FALSE",
+                    "isAnswer": false,
+                    "questionId": 7,
+                    "id": 10071
+                }
+            ],
+            "id": 7,
+            "questionTypeId": 1
+        },
+        {
+            "name": "What does the AWS Storage Gateway provide?\n",
+            "options": [
+                {
+                    "name": "It allows to integrate on-premises IT environments with Cloud Storage.\n",
+                    "isAnswer": true,
+                    "questionId": 8,
+                    "id": 10080
+                },
+                {
+                    "name": "A direct encrypted connection to Amazon S3.\n",
+                    "isAnswer": false,
+                    "questionId": 8,
+                    "id": 10081
+                },
+                {
+                    "name": "It's a backup solution that provides an on-premises Cloud storage.\n",
+                    "isAnswer": false,
+                    "questionId": 8,
+                    "id": 10082
+                },
+                {
+                    "name": "It provides an encrypted SSL endpoint for backups in the Cloud.",
+                    "isAnswer": false,
+                    "questionId": 8,
+                    "id": 10083
+                }
+            ],
+            "id": 8,
+            "questionTypeId": 1
+        },
+        {
+            "name": "Amazon RDS automated backups and DB Snapshots are currently supported for only the __________ storage engine\n",
+            "options": [
+                {
+                    "name": "InnoDB\n",
+                    "isAnswer": true,
+                    "questionId": 9,
+                    "id": 10090
+                },
+                {
+                    "name": "MyISAM",
+                    "isAnswer": false,
+                    "questionId": 9,
+                    "id": 10091
+                }
+            ],
+            "id": 9,
+            "questionTypeId": 1
+        },
+        {
+            "name": "How many relational database engines does RDS currently support?\n",
+            "options": [
+                {
+                    "name": "Three: MySQL, Oracle and Microsoft SQL Server.\n",
+                    "isAnswer": true,
+                    "questionId": 10,
+                    "id": 10100
+                },
+                {
+                    "name": "Just two: MySQL and Oracle.\n",
+                    "isAnswer": false,
+                    "questionId": 10,
+                    "id": 10101
+                },
+                {
+                    "name": "Six: Amazon Aurora, Oracle, Microsoft SQL Server, PostgreSQL, MySQL and MariaDB.\n",
+                    "isAnswer": false,
+                    "questionId": 10,
+                    "id": 10102
+                },
+                {
+                    "name": "Just one: MySQL.",
+                    "isAnswer": false,
+                    "questionId": 10,
+                    "id": 10103
+                }
+            ],
+            "explanation": "Amazon RDS provides you six familiar database engines to choose from, including Amazon Aurora, Oracle, Microsoft SQL Server, PostgreSQL, MySQL and MariaDB.\nhttps://aws.amazon.com/rds/?nc1=h_ls",
+            "id": 10,
+            "questionTypeId": 1
+        },
+        {
+            "name": "Fill in the blanks: The base URI for all requests for instance metadata is ___________\n",
+            "options": [
+                {
+                    "name": "http://254.169.169.254/latest/\n",
+                    "isAnswer": false,
+                    "questionId": 11,
+                    "id": 10110
+                },
+                {
+                    "name": "http://169.169.254.254/latest/\n",
+                    "isAnswer": false,
+                    "questionId": 11,
+                    "id": 10111
+                },
+                {
+                    "name": "http://127.0.0.1/latest/\n",
+                    "isAnswer": false,
+                    "questionId": 11,
+                    "id": 10112
+                },
+                {
+                    "name": "http://169.254.169.254/latest/",
+                    "isAnswer": true,
+                    "questionId": 11,
+                    "id": 10113
+                }
+            ],
+            "explanation": "http://aws.amazon.com/search?searchQuery=metadata&searchPath=all&x=0&y=0",
+            "id": 11,
+            "questionTypeId": 1
+        },
+        {
+            "name": "While creating the snapshots using the command line tools, which command should I be using?\n",
+            "options": [
+                {
+                    "name": "ec2-deploy-snapshot\n",
+                    "isAnswer": false,
+                    "questionId": 12,
+                    "id": 10120
+                },
+                {
+                    "name": "ec2-fresh-snapshot\n",
+                    "isAnswer": false,
+                    "questionId": 12,
+                    "id": 10121
+                },
+                {
+                    "name": "ec2-create-snapshot\n",
+                    "isAnswer": true,
+                    "questionId": 12,
+                    "id": 10122
+                },
+                {
+                    "name": "ec2-new-snapshot",
+                    "isAnswer": false,
+                    "questionId": 12,
+                    "id": 10123
+                }
+            ],
+            "explanation": "http://docs.aws.amazon.com/cli/latest/reference/ec2/create-snapshot.html",
+            "id": 12,
+            "questionTypeId": 1
+        },
+        {
+            "name": "Typically, you want your application to check whether a request generated an error before you spend any time processing results. The easiest way to find out if an error occurred is to look for an __________ node in the response from the Amazon RDS API.\n",
+            "options": [
+                {
+                    "name": "Incorrect\n",
+                    "isAnswer": false,
+                    "questionId": 13,
+                    "id": 10130
+                },
+                {
+                    "name": "Error\n",
+                    "isAnswer": true,
+                    "questionId": 13,
+                    "id": 10131
+                },
+                {
+                    "name": "FALSE",
+                    "isAnswer": false,
+                    "questionId": 13,
+                    "id": 10132
+                }
+            ],
+            "explanation": "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/APITroubleshooting.html",
+            "id": 13,
+            "questionTypeId": 1
+        },
+        {
+            "name": "What are the two types of licensing options available for using Amazon RDS for Oracle?\n",
+            "options": [
+                {
+                    "name": "BYOL and Enterprise License\n",
+                    "isAnswer": false,
+                    "questionId": 14,
+                    "id": 10140
+                },
+                {
+                    "name": "BYOL and License Included\n",
+                    "isAnswer": true,
+                    "questionId": 14,
+                    "id": 10141
+                },
+                {
+                    "name": "Enterprise License and License Included\n",
+                    "isAnswer": false,
+                    "questionId": 14,
+                    "id": 10142
+                },
+                {
+                    "name": "Role based License and License Included",
+                    "isAnswer": false,
+                    "questionId": 14,
+                    "id": 10143
+                }
+            ],
+            "explanation": "https://aws.amazon.com/rds/oracle/",
+            "id": 14,
+            "questionTypeId": 1
+        },
+        {
+            "name": "What does a \"Domain\" refer to in Amazon SWF?\n",
+            "options": [
+                {
+                    "name": "A security group in which only tasks inside can communicate with each other\n",
+                    "isAnswer": false,
+                    "questionId": 15,
+                    "id": 10150
+                },
+                {
+                    "name": "A special type of worker\n",
+                    "isAnswer": false,
+                    "questionId": 15,
+                    "id": 10151
+                },
+                {
+                    "name": "A collection of related Workflows\n",
+                    "isAnswer": true,
+                    "questionId": 15,
+                    "id": 10152
+                },
+                {
+                    "name": "The DNS record for the Amazon SWF service",
+                    "isAnswer": false,
+                    "questionId": 15,
+                    "id": 10153
+                }
+            ],
+            "explanation": "Domains provide a way of scoping Amazon SWF resources within your AWS account. All the components of a workflow, such as the workflow type and activity types, must be specified to be in a domain. It is possible to have more than one workflow in a domain; however, workflows in different domains cannot interact with each other.\nhttp://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-domain.html",
+            "id": 15,
+            "questionTypeId": 1
+        },
+        {
+            "name": "EBS Snapshots occur _____\n",
+            "options": [
+                {
+                    "name": "Asynchronously\n",
+                    "isAnswer": true,
+                    "questionId": 16,
+                    "id": 10160
+                },
+                {
+                    "name": "Synchronously\n",
+                    "isAnswer": false,
+                    "questionId": 16,
+                    "id": 10161
+                },
+                {
+                    "name": "Weekly",
+                    "isAnswer": false,
+                    "questionId": 16,
+                    "id": 10162
+                }
+            ],
+            "explanation": "Snapshots occur asynchronously; the point-in-time snapshot is created immediately, but the status of the snapshot is pending until the snapshot is complete (when all of the modified blocks have been transferred to Amazon S3), which can take several hours for large initial snapshots or subsequent snapshots where many blocks have changed.",
+            "id": 16,
+            "questionTypeId": 1
+        },
+        {
+            "name": "Disabling automated backups ______ disable the point-in-time recovery.\n",
+            "options": [
+                {
+                    "name": "if configured to can\n",
+                    "isAnswer": false,
+                    "questionId": 17,
+                    "id": 10170
+                },
+                {
+                    "name": "will never\n",
+                    "isAnswer": false,
+                    "questionId": 17,
+                    "id": 10171
+                },
+                {
+                    "name": "will",
+                    "isAnswer": true,
+                    "questionId": 17,
+                    "id": 10172
+                }
+            ],
+            "id": 17,
+            "questionTypeId": 1
+        },
+        {
+            "name": "Out of the stripping options available for the EBS volumes, which one has the following disadvantage :\n'Doubles the amount of I/O required from the instance to EBS compared to RAID 0, because you're mirroring all writes to a pair of volumes, limiting how much you can stripe.' ?\n",
+            "options": [
+                {
+                    "name": "Raid 0\n",
+                    "isAnswer": false,
+                    "questionId": 18,
+                    "id": 10180
+                },
+                {
+                    "name": "RAID 1+0 (RAID 10)\n",
+                    "isAnswer": false,
+                    "questionId": 18,
+                    "id": 10181
+                },
+                {
+                    "name": "Raid 1\n",
+                    "isAnswer": true,
+                    "questionId": 18,
+                    "id": 10182
+                },
+                {
+                    "name": "Raid",
+                    "isAnswer": false,
+                    "questionId": 18,
+                    "id": 10183
+                }
+            ],
+            "explanation": "http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/raid-config.html\nraid 0 and 1 are the common types. Raid 5 and 6 are not recommended because of the extended stripe. If you encounter this question on the exam I suspect the answer options will be different.\nRaid 1 Disadvantage\nDoes not provide a write performance improvement; requires more Amazon EC2 to Amazon EBS bandwidth than non-RAID configurations because the data is written to multiple volumes simultaneously.\nRaid 0 Disadvantage\nPerformance of the stripe is limited to the worst performing volume in the set. Loss of a single volume results in a complete data loss for the array.\nRaid 5 and 6 notes\nRAID 5 and RAID 6 are not recommended for Amazon EBS because the parity write operations of these RAID modes consume some of the IOPS available to your volumes. Depending on the configuration of your RAID array, these RAID modes provide 20-30% fewer usable IOPS than a RAID 0 configuration. Increased cost is a factor with these RAID modes as well; when using identical volume sizes and speeds, a 2-volume RAID 0 array can outperform a 4-volume RAID 6 array that costs twice as much",
+            "id": 18,
+            "questionTypeId": 1
+        },
+        {
+            "name": "Is creating a Read Replica of another Read Replica supported?\n",
+            "options": [
+                {
+                    "name": "Only in certain regions\n",
+                    "isAnswer": false,
+                    "questionId": 19,
+                    "id": 10190
+                },
+                {
+                    "name": "Only with MSSQL based RDS\n",
+                    "isAnswer": true,
+                    "questionId": 19,
+                    "id": 10191
+                },
+                {
+                    "name": "Only for Oracle RDS types\n",
+                    "isAnswer": false,
+                    "questionId": 19,
+                    "id": 10192
+                },
+                {
+                    "name": "No",
+                    "isAnswer": false,
+                    "questionId": 19,
+                    "id": 10193
+                }
+            ],
+            "explanation": "https://aws.amazon.com/rds/faqs/\nQ: Can I create a Read Replica of another Read Replica?\nAmazon RDS for MySQL: You can create a second-tier Read Replica from an existing first-tier Read Replica. By creating a second-tier Read Replica, you may be able to move some of the replication load from the master database instance to a first-tier Read Replica. Please note that a second-tier Read Replica may lag further behind the master because of additional replication latency introduced as transactions are replicated from the master to the first tier replica and then to the second-tier replica.\nAmazon RDS for PostgreSQL: Read Replicas of Read Replicas are not currently supported",
+            "id": 19,
+            "questionTypeId": 1
+        },
+        {
+            "name": "Can Amazon S3 uploads resume on failure or do they need to restart?\n",
+            "options": [
+                {
+                    "name": "Restart from beginning\n",
+                    "isAnswer": false,
+                    "questionId": 20,
+                    "id": 10200
+                },
+                {
+                    "name": "You can resume them, if you flag the \"resume on failure\" option before uploading.\n",
+                    "isAnswer": false,
+                    "questionId": 20,
+                    "id": 10201
+                },
+                {
+                    "name": "Resume on failure\n",
+                    "isAnswer": true,
+                    "questionId": 20,
+                    "id": 10202
+                },
+                {
+                    "name": "Depends on the file size",
+                    "isAnswer": false,
+                    "questionId": 20,
+                    "id": 10203
+                }
+            ],
+            "id": 20,
+            "questionTypeId": 1
+        },
+        {
+            "name": "Which of the following cannot be used in Amazon EC2 to control who has access to specific Amazon EC2 instances?\n",
+            "options": [
+                {
+                    "name": "Security Groups\n",
+                    "isAnswer": false,
+                    "questionId": 21,
+                    "id": 10210
+                },
+                {
+                    "name": "IAM System\n",
+                    "isAnswer": true,
+                    "questionId": 21,
+                    "id": 10211
+                },
+                {
+                    "name": "SSH keys\n",
+                    "isAnswer": false,
+                    "questionId": 21,
+                    "id": 10212
+                },
+                {
+                    "name": "Windows passwords",
+                    "isAnswer": false,
+                    "questionId": 21,
+                    "id": 10213
+                }
+            ],
+            "explanation": "http://blogs.aws.amazon.com/security/post/Tx29HCT3ABL7LP3/Resource-level-Permissions-for-EC2-Controlling-Management-Access-on-Specific-Ins",
+            "id": 21,
+            "questionTypeId": 1
+        },
+        {
+            "name": "Fill in the blanks: _________ let you categorize your EC2 resources in different ways, for example, by purpose, owner, or environment.\n",
+            "options": [
+                {
+                    "name": "wildcards\n",
+                    "isAnswer": false,
+                    "questionId": 22,
+                    "id": 10220
+                },
+                {
+                    "name": "pointers\n",
+                    "isAnswer": false,
+                    "questionId": 22,
+                    "id": 10221
+                },
+                {
+                    "name": "Tags\n",
+                    "isAnswer": true,
+                    "questionId": 22,
+                    "id": 10222
+                },
+                {
+                    "name": "special filters",
+                    "isAnswer": false,
+                    "questionId": 22,
+                    "id": 10223
+                }
+            ],
+            "id": 22,
+            "questionTypeId": 1
+        },
+        {
+            "name": "How can I change the security group membership for interfaces owned by other AWS, such as Elastic Load Balancing?\n",
+            "options": [
+                {
+                    "name": "By using the service specific console or API\\CLI commands\n",
+                    "isAnswer": true,
+                    "questionId": 23,
+                    "id": 10230
+                },
+                {
+                    "name": "None of these\n",
+                    "isAnswer": false,
+                    "questionId": 23,
+                    "id": 10231
+                },
+                {
+                    "name": "Using Amazon EC2 API/CLI\n",
+                    "isAnswer": false,
+                    "questionId": 23,
+                    "id": 10232
+                },
+                {
+                    "name": "using all these methods",
+                    "isAnswer": false,
+                    "questionId": 23,
+                    "id": 10233
+                }
+            ],
+            "explanation": "http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/elb-security-groups.html",
+            "id": 23,
+            "questionTypeId": 1
+        },
+        {
+            "name": "What is the maximum write throughput I can provision for a single Dynamic DB table?\n",
+            "options": [
+                {
+                    "name": "1,000 write capacity units\n",
+                    "isAnswer": false,
+                    "questionId": 24,
+                    "id": 10240
+                },
+                {
+                    "name": "100,000 write capacity units\n",
+                    "isAnswer": false,
+                    "questionId": 24,
+                    "id": 10241
+                },
+                {
+                    "name": "Dynamic DB is designed to scale without limits, but if you go beyond 10,000 you have to contact AWS first.\n",
+                    "isAnswer": true,
+                    "questionId": 24,
+                    "id": 10242
+                },
+                {
+                    "name": "10,000 write capacity units",
+                    "isAnswer": false,
+                    "questionId": 24,
+                    "id": 10243
+                }
+            ],
+            "explanation": "https://aws.amazon.com/dynamodb/faqs/",
+            "id": 24,
+            "questionTypeId": 1
+        },
+        {
+            "name": "What does the following command do with respect to the Amazon EC2 security groups? ec2-revoke RevokeSecurityGroupIngress\n",
+            "options": [
+                {
+                    "name": "Removes one or more security groups from a rule.\n",
+                    "isAnswer": false,
+                    "questionId": 25,
+                    "id": 10250
+                },
+                {
+                    "name": "Removes one or more security groups from an Amazon EC2 instance.\n",
+                    "isAnswer": false,
+                    "questionId": 25,
+                    "id": 10251
+                },
+                {
+                    "name": "Removes one or more rules from a security group.\n",
+                    "isAnswer": true,
+                    "questionId": 25,
+                    "id": 10252
+                },
+                {
+                    "name": "Removes a security group from our account.",
+                    "isAnswer": false,
+                    "questionId": 25,
+                    "id": 10253
+                }
+            ],
+            "explanation": "Removes one or more ingress rules from a security group. The values that you specify in the revoke request (for example, ports) must match the existing rule’s values for the rule to be removed.\nhttp://docs.aws.amazon.com/cli/latest/reference/ec2/revoke-security-group-ingress.html",
+            "id": 25,
+            "questionTypeId": 1
+        }
+    ]
+}
