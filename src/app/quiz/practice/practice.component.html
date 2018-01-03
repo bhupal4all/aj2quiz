@@ -1,3 +1,65 @@
-<p>
-  practice works!
-</p>
+<div id='practice'  *ngFor="let question of filteredQuestions;let idx = index" >
+  <div class="row" (keypress)="eventHandler($event, idx)">
+    <div class="col-md-2">
+      <div class="bg-primary text-white text-center">Question {{pager.index + idx + 1}} / {{pager.count}}.</div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-6">
+          <button class='btn btn-outline-primary btn-sm' (click)='checkAnswer(question)'>Check Answer</button>
+          <button class='btn btn-outline-info btn-sm' [disabled]='!(question.hint && question.explanation)' (click)='showHint=true;'>Show Hint</button>
+        </div>
+        <div class="col-md-6">
+          <div *ngIf='isCorrect!== undefined && isCorrect' class='bg-success text-white text-center'>Correct Answer</div>
+          <div *ngIf='isCorrect!== undefined && !isCorrect' class='bg-danger text-white text-center'>In-Correct Answer</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <nav>
+        <ul class="pagination justify-content-end">
+          <li class="page-item" [ngClass]="{disabled:pager.index <= 0}">
+            <a class="page-link" (click)='goToQuestion(pager.index-idx-1)' aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li class="page-item" [ngClass]="{'active':quiz.questions[pager.index].id == question.id}" *ngFor='let question of quiz.questions | slice:previous:previous+5;let idx=index;'>
+            <a class="page-link" [ngClass]="{'bg-secondary text-light':quiz.questions[pager.index].isAnswered}" (click)='goToQuestion(previous+idx)'>{{previous+idx+1}}</a>
+          </li>
+          <li class="page-item" [ngClass]="{disabled:previous + 5 > pager.count}">
+            <a class="page-link" (click)='goToQuestion(pager.index+idx+1)' aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class='card' style='padding:30px;'>
+    <h5>
+      <span [innerHTML]="question.name"></span>
+    </h5>
+
+    <span *ngFor="let option of question.options;let idx=index;">
+      <li class='list-group-item' [ngClass]="{'checkbox-circle': question.questionTypeId===1}" *ngIf='option.name' style='margin: 5px;'>
+        <input id="{{question.id+''+option.id}}" type="checkbox" [(ngModel)]="option.selected" (change)="onSelect(question, option);"
+        />
+        <label [attr.for]="question.id+''+option.id">
+          <span [innerHTML]="option.name"></span>
+        </label>
+      </li>
+    </span>
+  </div>
+  <div class='card' *ngIf='showHint && question.hint && question.explanation'>
+    <div class="card-body">
+      <div *ngIf='question.hint'><h6>Hint</h6><span [innerHTML]="question.hint"></span></div>
+      <div *ngIf='question.explanation'>
+        <hr><h6>Explanation</h6> <span [innerHTML]="question.explanation"></span>
+      </div>
+    </div>
+  </div>
+</div>
+

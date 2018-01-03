@@ -11,16 +11,16 @@
           <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
         </li>
         <li>
-          <a routerLink="/new" routerLinkActive="active" class="nav-link">New</a>
+          <a routerLink="/quiz" routerLinkActive="active" class="nav-link">Quiz</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Actions
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" routerLinkActive="active" routerLink="/newCategory">New Category</a>
+            <a class="dropdown-item" routerLinkActive="active" routerLink="/new">New Question</a>
             <a class="dropdown-item" routerLinkActive="active" routerLink="/quiz">Quiz</a>
-            <a class="dropdown-item" routerLinkActive="active" routerLink="/practice">Practice</a>
-            <a class="dropdown-item" routerLinkActive="active" routerLink="/review">Review</a>
           </div>
         </li>
       </ul>
@@ -30,4 +30,11 @@
 
   <br>
   <router-outlet></router-outlet>
+
+  <footer class="footer">
+    <div class="container">
+      <hr>
+      <p class="text-muted">&copy; Bhupal 2018</p>
+    </div>
+  </footer>
 </div>

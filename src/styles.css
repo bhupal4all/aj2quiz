@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+input[type=checkbox]+label {
+    display: inline;
+}
+
+li>input[type=checkbox]:checked+label {
+    color: tomato;
+}
+
+li:hover {
+    font-weight: bold;
+}

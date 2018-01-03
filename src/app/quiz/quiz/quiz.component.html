@@ -1,3 +1,167 @@
-<p>
-  quiz works!
-</p>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'disabled':isStarted,'active':currTab=='settings'}" data-toggle="tab" href="#settings">Settings</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'disabled':!isStarted, 'active':currTab=='quiz'}" data-toggle="tab" href="#quiz">Quiz</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{'disabled':!isStarted, 'active':currTab=='review'}" data-toggle="tab" href="#review" (click)='changeTab("review")'>Review</a>
+  </li>
+  <li class="nav-item" *ngIf='isStarted'>
+    <select id='q' type="text" class='form-control' [(ngModel)]='quiz.id' disabled>
+      <option *ngFor='let qz of quizes' value="{{qz.id}}">{{qz.name}}</option>
+    </select>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane" [ngClass]="{'active':currTab=='settings'}" id="settings">
+    <h3 class='text-info'>Quiz Settings</h3>
+    <div class="row">
+      <div class="col-md-4">
+        <label for="q">Quiz</label>
+        <select id='q' type="text" class='form-control' [(ngModel)]='quiz.id'>
+          <option *ngFor='let qz of quizes' value="{{qz.id}}">{{qz.name}}</option>
+        </select>
+      </div>
+    </div>
+    <br>
+    <div class="row" *ngIf='quiz.id'>
+      <div class="col-md-4">
+        <label for="pagerSize">Pager Size</label>
+        <input id='pagerSize' type="text" class='form-control' [(ngModel)]='pager.size'>
+      </div>
+      <div class="col-md-4">
+        <label for="pagerSize">Quiz Size</label>
+        <input id='pagerSize' type="text" class='form-control' [(ngModel)]='quizSize'>
+      </div>
+      <div class="col-md-4">
+        <label for="quizCounter">Quiz Time (in Minutes)</label>
+        <input id='quizCounter' type="text" class='form-control' [(ngModel)]='timer'>
+      </div>
+      <div class="col-md-4">
+        <label for="allowBack">Allow Back</label>
+        <select id='allowBack' type="text" class='form-control' [(ngModel)]='config.allowBack'>
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="autoForward">Auto Forward</label>
+        <select id='autoForward' type="text" class='form-control' [(ngModel)]='config.autoMove'>
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="shuffleQuestions">Shuffle Questions</label>
+        <select id='shuffleQuestions' type="text" class='form-control' [(ngModel)]='config.shuffleQuestions'>
+          <option value=true>True</option>
+          <option value=false>False</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="shuffleOptions">Shuffle Options</label>
+        <select id='shuffleOptions' type="text" class='form-control' [(ngModel)]='config.shuffleOptions'>
+          <option value="true">True</option>
+          <option value="false">False</option>
+        </select>
+      </div>
+    </div>
+    <br>
+    <button class='btn btn-primary' (click)='startQuiz()'>Start</button>
+  </div>
+  <div class="tab-pane" [ngClass]="{'active':currTab=='quiz'}" id="quiz">
+    <br>
+    <div class="progress" style="height: 10px;">
+      <div class="progress-bar bg-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:this.Math.round((questionsAnswered/pager.count)*100) + '%'}">
+        <!-- {{this.Math.round((questionsAnswered/pager.count)*100)}}% -->
+      </div>
+    </div>
+    <br>
+    <div class='card card-body' *ngFor="let question of filteredQuestions;let idx = index">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>
+            <span class="badge badge-info">
+              Question {{pager.index + idx + 1}} / {{pager.count}}</span>
+          </h3>
+        </div>
+        <div class="col-md-6">
+          <nav>
+            <ul class="pagination justify-content-end">
+              <li class="page-item" [ngClass]="{disabled:pager.index <= 0}" *ngIf='config.allowBack'>
+                <a class="page-link" (click)='goToQuestion(0)' aria-label="First">
+                  <span aria-hidden="true">&laquo;&laquo;</span>
+                  <span class="sr-only">First</span>
+                </a>
+              </li>
+              <li class="page-item" [ngClass]="{disabled:pager.index <= 0}" *ngIf='config.allowBack'>
+                <a class="page-link" (click)='goToQuestion(pager.index-idx-config.pageSize)' aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item" [ngClass]="{'active':quiz.questions[pager.index].id == question.id}" *ngFor='let question of quiz.questions | slice:previous:previous+pager.size;let idx=index;'>
+                <a class="page-link" (click)='goToQuestion(previous+idx)'>{{previous+idx+1}}</a>
+              </li>
+              <li class="page-item" [ngClass]="{disabled:pager.index >= pager.count - config.pageSize}">
+                <a class="page-link" (click)='goToQuestion(pager.index+idx+config.pageSize)' aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+              <li class="page-item" [ngClass]="{disabled:pager.index >= pager.count}">
+                <a class="page-link" (click)='goToQuestion(pager.count-1)' aria-label="Last">
+                  <span aria-hidden="true">&raquo;&raquo;</span>
+                  <span class="sr-only">Last</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <br>
+      <h5>
+        <span [innerHTML]="question.name"></span>
+      </h5>
+
+      <span *ngFor="let option of question.options;let idx=index;">
+        <li class='list-group-item checkbox' [ngClass]="{'checkbox-circle': question.questionTypeId===1}" *ngIf='option.name' style='margin: 5px;'>
+          <input id="{{question.id+''+idx}}" type="checkbox" [(ngModel)]="option.selected" (change)="onSelect(question, option);" [disabled]='isSubmitted'
+          />
+          <label [attr.for]="question.id+''+idx" [ngClass]="{'text-success': isSubmitted && option.isAnswer}">
+            <span [innerHTML]="option.name"></span>
+          </label>
+        </li>
+      </span>
+
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-md-3">
+          <button type='button' class="btn btn-primary btn-sm" style='width:100%' *ngIf='!isSubmitted' [disabled]="pager.index == 0"
+            (click)='goToQuestion(pager.index+idx-2+config.pageSize)'>Previous</button>
+        </div>
+        <div class="col-md-3">
+          <button type='button' class="btn btn-primary btn-sm" style='width:100%' *ngIf='!isSubmitted' [disabled]="pager.index >= pager.count - config.pageSize"
+            (click)='goToQuestion(pager.index+idx+config.pageSize)'>Next</button>
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-primary btn-sm" style='width:100%' *ngIf='!isSubmitted' (click)='submitQuiz()'>Submit Quiz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" [ngClass]="{'active':currTab=='review'}" style='padding:20px;' id="review">
+    <h1>Review {{currTab}}</h1>
+    <div class='row' style='padding:20px;'>
+      <button type='button' class="btn col-md-1 text-center border border-black text-white" style='width:100%' *ngFor="let question of quiz.questions;let idx=index;"
+        [ngClass]="{'bg-success':(isSubmitted && question.isCorrect), 'bg-info':(!isSubmitted && question.answered), 'bg-danger':(question.answered && isSubmitted && !question.isCorrect)}"
+        (click)='changeTab("quiz"); goToQuestion(idx);'>{{idx+1}}</button>
+    </div>
+  </div>
+</div>

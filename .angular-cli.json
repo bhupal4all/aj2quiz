@@ -20,6 +20,8 @@
       "prefix": "app",
       "styles": [
         "styles.css",
+        "./assets/checkbox.css",
+        "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
       "scripts": [
