@@ -11,6 +11,7 @@ export class Question {
     isCorrect: boolean;
     quizId: number = 0;
     quizKey: string = '';
+    key:string = '';
 
     constructor(data: any) {
         data = data || {};
@@ -26,5 +27,7 @@ export class Question {
         data.options.forEach(o => {
             this.options.push(new Option(o));
         });
+
+        this.key = data.$key || '';
     }
 }
