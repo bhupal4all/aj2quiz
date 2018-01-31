@@ -3,11 +3,11 @@
 <div class="card">
   <p class="alert alert-danger" *ngIf='message.length>0'>{{message}}</p>
   <label for="q">Question Collection</label>
-  <select id='q' type="text" class='form-control' [(ngModel)]='question.quizId'>
-    <option *ngFor='let qz of quizes' value="{{qz.id}}">{{qz.name}}</option>
+  <select id='q' type="text" class='form-control' [(ngModel)]='question.quizKey'>
+    <option *ngFor='let qz of quizes' value="{{qz.key}}">{{qz.name}}</option>
   </select>
 
-  <fieldset *ngIf='question.quizId'>
+  <fieldset *ngIf='question.quizKey'>
     <div class="row">
       <label for="example-text-input" class="col-2 col-form-label">Question</label>
       <div class="col-10">

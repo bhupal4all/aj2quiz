@@ -21,8 +21,7 @@ export class CategoryComponent implements OnInit {
 
   saveQuiz() {
     if (this.quiz.name.length > 0 && this.quiz.description.length > 0) {
-      this.quizService.saveQuiz(this.quiz).subscribe(res => {
-        console.log('saved' + res);
+      this.quizService.saveQuiz(this.quiz).then(res => {
         this.quiz = new Quiz({});
       });
     }

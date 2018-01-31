@@ -69,8 +69,9 @@ export class QuestionComponent implements OnInit {
       this.message = 'At least one answer must select';
 
     if (answerCount > 0) {
-      this.quizService.save(this.question).subscribe(res => {
-        let qId = this.question.quizId;
+      this.quizService.save(this.question).then(res => {
+        let qId = this.question.quizId || 0;
+        let qKey = this.question.quizKey;
         this.question = new Question({
           "name": "",
           "options": [
@@ -79,6 +80,7 @@ export class QuestionComponent implements OnInit {
           "explanation": ""
         });
         this.question.quizId = qId;
+        this.question.quizKey = qKey;
         this.tempString = "";
         this.message = '';
       });

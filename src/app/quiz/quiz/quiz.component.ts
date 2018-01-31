@@ -56,25 +56,23 @@ export class QuizComponent implements OnInit {
 
   loadQuiz() {
     this.pager.index = 0;
-    this.quizService.getQuizQuestions(this.quiz.id).subscribe(res => {
-      this.quiz.questions = [];
-      let trueVar: boolean = true;
-
-      res.forEach(element => {
-        this.quiz.questions.push(new Question(element));
-      });
+    this.quiz.questions = [];
+ 
+    this.quizService.getQuizQuestions(this.quiz).subscribe(data => {
+      this.quiz.questions = data;
       this.pager.count = this.quiz.questions.length / this.config.pageSize;
-
+      let trueVar: boolean = true;
+  
       if (this.config.shuffleQuestions === trueVar) {
         console.log('Questions Shuffled')
         this.quiz.questions = this.helperService.shuffleQuestions(this.quiz);
       }
-
+  
       if (this.config.shuffleOptions === trueVar) {
         console.log('Options Shuffled')
         this.quiz = this.helperService.shuffleOptions(this.quiz);
       }
-
+  
       if (this.quizSize > 0) {
         this.quiz.questions = this.quiz.questions.slice(0, this.quizSize);
         this.pager.count = this.quiz.questions.length;
@@ -141,10 +139,10 @@ export class QuizComponent implements OnInit {
           } else if (option.isAnswer && !option.selected) {
             question.isCorrect = false;
           }
-        
+
           if (question.isCorrect == false) {
             skipRest = true;
-          } 
+          }
         }
       });
     });

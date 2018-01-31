@@ -13,6 +13,12 @@ import { ReviewComponent } from './quiz/review/review.component';
 import { ErrorComponent } from './error/error.component';
 import { CategoryComponent } from './new/category/category.component';
 
+import { AngularFireModule } from 'angularfire2';
+// New imports to update based on AngularFire2 version 4
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +34,10 @@ import { CategoryComponent } from './new/category/category.component';
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

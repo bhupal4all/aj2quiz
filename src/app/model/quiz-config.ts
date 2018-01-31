@@ -17,10 +17,10 @@ export class QuizConfig {
         this.allowBack = data.allowBack || true;
         this.allowReview = data.allowReview || true;
         this.autoMove = data.autoMove || false;
-        this.duration = data.duration;
+        this.duration = data.duration || 0;
         this.pageSize = data.pageSize || 1;
-        this.requiredAll = data.requiredAll;
-        this.richText = data.richText;
+        this.requiredAll = data.requiredAll || true;
+        this.richText = data.richText || false;
         this.shuffleQuestions = data.shuffleQuestions || true;
         this.shuffleOptions = data.shuffleOptions || true;
         this.showClock = data.showClock || true;
