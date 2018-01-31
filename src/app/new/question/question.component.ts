@@ -68,6 +68,8 @@ export class QuestionComponent implements OnInit {
     else
       this.message = 'At least one answer must select';
 
+    this.question.name = this.question.name.replace(/\n/g, '<br>');
+
     if (answerCount > 0) {
       this.quizService.save(this.question).then(res => {
         let qId = this.question.quizId || 0;

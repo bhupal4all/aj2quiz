@@ -105,7 +105,7 @@
                   <span class="sr-only">Previous</span>
                 </a>
               </li>
-              <li class="page-item" [ngClass]="{'active':quiz.questions[pager.index].id == question.id}" *ngFor='let question of quiz.questions | slice:previous:previous+pager.size;let idx=index;'>
+              <li class="page-item" [ngClass]="{'active':quiz.questions[pager.index].key == question.key}" *ngFor='let question of quiz.questions | slice:previous:previous+pager.size;let idx=index;'>
                 <a class="page-link" (click)='goToQuestion(previous+idx)'>{{previous+idx+1}}</a>
               </li>
               <li class="page-item" [ngClass]="{disabled:pager.index >= pager.count - config.pageSize}">

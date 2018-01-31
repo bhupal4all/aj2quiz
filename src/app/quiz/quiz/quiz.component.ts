@@ -59,7 +59,10 @@ export class QuizComponent implements OnInit {
     this.quiz.questions = [];
  
     this.quizService.getQuizQuestions(this.quiz).subscribe(data => {
-      this.quiz.questions = data;
+      data.forEach(json=>{
+        this.quiz.questions.push(new Question(json));  
+      });
+      
       this.pager.count = this.quiz.questions.length / this.config.pageSize;
       let trueVar: boolean = true;
   
