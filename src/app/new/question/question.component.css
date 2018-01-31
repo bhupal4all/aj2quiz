@@ -1,0 +1,12 @@
+.card {
+    background-color: aliceblue;
+    padding: 20px;
+}
+
+.row {
+    padding: 5px;
+}
+
+button {
+    width:100%;
+}

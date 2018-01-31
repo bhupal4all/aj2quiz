@@ -1,0 +1,22 @@
+<h1>New Category</h1>
+
+<div class="card" style="padding:20px;">
+  <fieldset>
+    <div class="row">
+      <label for="name" class="col-md-2">Name</label>
+      <input id='name' type="text" class='col-md-10 form-control' [(ngModel)]='quiz.name' required>
+    </div>
+    <br>
+    <div class="row">
+      <label for="description" class="col-md-2">Description</label>
+      <textarea id="description" cols="30" rows="3" class='col-md-10 form-control' [(ngModel)]='quiz.description' required></textarea>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-4">
+          <button class="btn btn-primary" (click)='saveQuiz()'>Save</button>
+        </div>
+      </div>
+  </fieldset>
+</div>

@@ -1,3 +1,63 @@
-<p>
-  question works!
-</p>
+<h1>New Question</h1>
+
+<div class="card">
+  <p class="alert alert-danger" *ngIf='message.length>0'>{{message}}</p>
+  <label for="q">Question Collection</label>
+  <select id='q' type="text" class='form-control' [(ngModel)]='question.quizId'>
+    <option *ngFor='let qz of quizes' value="{{qz.id}}">{{qz.name}}</option>
+  </select>
+
+  <fieldset *ngIf='question.quizId'>
+    <div class="row">
+      <label for="example-text-input" class="col-2 col-form-label">Question</label>
+      <div class="col-10">
+        <textarea rows=5 class="form-control" type="text" [(ngModel)]='tempString' placeholder="Question"></textarea>
+      </div>
+    </div>
+    <button class="btn btn-secondary" (click)='parse()'>
+      <i class="fa fa-check" aria-hidden="true"></i>
+    </button>
+
+    <div *ngIf='question.name'>
+      <div class="row">
+        <label for="example-text-input" class="col-2 col-form-label">Question</label>
+        <div class="col-10">
+          <textarea rows=3 class="form-control" type="text" [(ngModel)]='question.name' placeholder="Question"></textarea>
+        </div>
+      </div>
+      <div class="row" *ngFor='let option of question.options;let idx = index;'>
+        <label for="example-text-input" class="col-2 col-form-label">Option {{idx+1}}</label>
+        <div class="checkbox col-1 text-sm-right">
+          <input type="checkbox" id='op{{idx+1}}' [(ngModel)]='option.isAnswer'>
+          <label for='op{{idx+1}}'></label>
+        </div>
+        <div class="col-9">
+          <input class="form-control" type="text" [(ngModel)]='option.name' placeholder="Option {{idx+1}}">
+        </div>
+      </div>
+      <button class="btn-sm btn btn-secondary" (click)='addOption()'>
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      </button>
+      <div class="row">
+        <label for="example-text-input" class="col-2 col-form-label">Hint</label>
+        <div class="col-10">
+          <textarea rows=2 class="form-control" type="text" [(ngModel)]='question.hint' placeholder="Hint"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <label for="example-text-input" class="col-2 col-form-label">Explantion</label>
+        <div class="col-10">
+          <textarea rows=2 class="form-control" type="text" [(ngModel)]='question.explanation' placeholder="Explantion"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-primary" (click)='saveQuestion()'>Save</button>
+        </div>
+        <div class="col-md-6">
+          <button type="reset" class="btn btn-primary" (click)='resetData()'>Reset</button>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
