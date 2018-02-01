@@ -115,12 +115,14 @@ export class QuizComponent implements OnInit {
       });
 
       if (this.config.autoMove) {
-        if (this.pager.index < this.pager.count - 1) {
+        if (this.pager.index < this.pager.count) {
           this.pager.index++;
         }
         this.goToQuestion(this.pager.index);
 
-        if (this.pager.index === this.pager.count - 1) {
+        if (this.pager.index === this.pager.count) {
+          // put the index to last question
+          this.pager.index--;
           this.submitQuiz();
         }
       }
@@ -130,20 +132,22 @@ export class QuizComponent implements OnInit {
   submitQuiz() {
     this.currTab = 'review';
     this.isSubmitted = true;
-    let skipRest = false;
     this.quiz.questions.forEach(question => {
-      question.isCorrect = false;
+      question.isCorrect = undefined;
+      let skipRest = false;
       question.options.forEach(option => {
         if (!skipRest) {
-          if (option.selected && option.selected === option.isAnswer) {
+          if (option.selected && option.isAnswer) {
             question.isCorrect = true;
-          } else if (option.selected && option.selected !== option.isAnswer) {
+          } else if (option.selected && !option.isAnswer) {
             question.isCorrect = false;
-          } else if (option.isAnswer && !option.selected) {
+          } else if (!option.selected && option.isAnswer) {
             question.isCorrect = false;
           }
 
-          if (question.isCorrect == false) {
+          if (question.questionTypeId === 1 && question.isCorrect !== undefined) {
+            skipRest = true;
+          } else if (question.isCorrect !== undefined && question.isCorrect !== true) {
             skipRest = true;
           }
         }
