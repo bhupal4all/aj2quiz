@@ -1,9 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Injector } from '@angular/core';
 import { Observable } from 'rxjs/Observable'
 
 import { Option, Question, Quiz, QuizConfig, Pager } from '../../model/index';
 import { QuizService } from '../../service/quiz.service';
 import { HelperService } from '../../service/helper.service';
+import { AppComponent } from '../../app.component';
+import { ClockTimerComponent } from '../../clock-timer/clock-timer.component';
 
 @Component({
   selector: 'app-quiz',
@@ -35,9 +37,13 @@ export class QuizComponent implements OnInit {
   };
 
   questionsAnswered: number = 0;
+  appComponent:any;
 
-  constructor(private quizService: QuizService, private helperService: HelperService) {
+  constructor(private quizService: QuizService, private helperService: HelperService, private inj: Injector) {
     this.Math = Math;
+
+    this.appComponent = inj.get(AppComponent);
+    this.appComponent.completeFunction = this.submitQuiz;
   }
 
   ngOnInit() {
@@ -46,36 +52,42 @@ export class QuizComponent implements OnInit {
         this.quizes.push(new Quiz(element));
       });
     });
+
+    this.appComponent.timerEnded.subscribe(value=>{
+      this.submitQuiz();
+    });
   }
 
   startQuiz() {
     this.loadQuiz();
     this.isStarted = true;
     this.currTab = 'quiz';
+    this.appComponent.timerInSecs = this.timer * 60;
+    this.appComponent.notifyChildren();
   }
 
   loadQuiz() {
     this.pager.index = 0;
     this.quiz.questions = [];
- 
+
     this.quizService.getQuizQuestions(this.quiz).subscribe(data => {
-      data.forEach(json=>{
-        this.quiz.questions.push(new Question(json));  
+      data.forEach(json => {
+        this.quiz.questions.push(new Question(json));
       });
-      
+
       this.pager.count = this.quiz.questions.length / this.config.pageSize;
       let trueVar: boolean = true;
-  
+
       if (this.config.shuffleQuestions === trueVar) {
         console.log('Questions Shuffled')
         this.quiz.questions = this.helperService.shuffleQuestions(this.quiz);
       }
-  
+
       if (this.config.shuffleOptions === trueVar) {
         console.log('Options Shuffled')
         this.quiz = this.helperService.shuffleOptions(this.quiz);
       }
-  
+
       if (this.quizSize > 0) {
         this.quiz.questions = this.quiz.questions.slice(0, this.quizSize);
         this.pager.count = this.quiz.questions.length;

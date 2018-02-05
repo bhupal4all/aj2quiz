@@ -1,0 +1,3 @@
+<h5 *ngIf='counter>0' class='text-center' [ngClass]="{'bg-dark':counter > 0,'text-danger': (counter <= 10 && counter > 0), 'text-warning': (counter <= warning && counter > 0), 'text-success': (counter > warning || counter <= 0) }">
+  {{timedDisplay}}
+</h5>
