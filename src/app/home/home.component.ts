@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injector } from '@angular/core';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private inj: Injector) {
+    inj.get(AppComponent).timerInSecs = 0;
+    inj.get(AppComponent).notifyChildren();
+  }
 
   ngOnInit() {
   }
