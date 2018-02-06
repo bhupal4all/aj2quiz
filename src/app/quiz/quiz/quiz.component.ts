@@ -165,6 +165,9 @@ export class QuizComponent implements OnInit {
         }
       });
     });
+
+    this.appComponent.timerInSecs = 0;
+    this.appComponent.notifyChildren();
   }
 
   changeTab(tabName) {
