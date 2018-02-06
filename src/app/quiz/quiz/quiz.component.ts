@@ -37,7 +37,7 @@ export class QuizComponent implements OnInit {
   };
 
   questionsAnswered: number = 0;
-  appComponent:any;
+  appComponent: any;
 
   constructor(private quizService: QuizService, private helperService: HelperService, private inj: Injector) {
     this.Math = Math;
@@ -53,7 +53,7 @@ export class QuizComponent implements OnInit {
       });
     });
 
-    this.appComponent.timerEnded.subscribe(value=>{
+    this.appComponent.timerEnded.subscribe(value => {
       this.submitQuiz();
     });
   }
@@ -62,8 +62,11 @@ export class QuizComponent implements OnInit {
     this.loadQuiz();
     this.isStarted = true;
     this.currTab = 'quiz';
-    this.appComponent.timerInSecs = this.timer * 60;
-    this.appComponent.notifyChildren();
+
+    if (this.timer > 0) {
+      this.appComponent.timerInSecs = this.timer * 60;
+      this.appComponent.notifyChildren();
+    }
   }
 
   loadQuiz() {
