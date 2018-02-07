@@ -17,10 +17,10 @@ export class ClockTimerComponent implements OnInit {
   complete = new EventEmitter();
 
   @Input()
-  format: String = 'clock';
+  format: string = 'clock';
 
   @Input()
-  completeMessage: String = 'Time Completed';
+  completeMessage: string = 'Time Completed';
 
   @Input()
   warning: number = 60;
@@ -31,22 +31,41 @@ export class ClockTimerComponent implements OnInit {
   @Input()
   counterChanged: Subject<any>;
 
+  timerName: string = 'QuizTimer';
+
   ngOnInit() {
     this.timer = new SimpleTimer();
 
-    if (this.counter !== undefined && this.counter > 0)
-      this.start();
-    else
-      this.getFormat();
-
-    this.counterChanged.subscribe(event =>{
-      this.start();
+    this.getFormat();
+    this.counterChanged.subscribe(time => {
+      this.stopTimer();
+      if (time > 0) {
+        this.counter = time;
+        this.start();
+      }
     })
   }
 
   start = function () {
-    this.timer.newTimer('1sec', 1);
-    this.timerId = this.timer.subscribe('1sec', () => this.countdown());
+    console.log('Strating timer for ' + this.counter);
+    this.timer.newTimer(this.timerName, 1);
+
+    this.stopTimer();
+    this.timerId = this.timer.subscribe(this.timerName, () => this.countdown());
+    console.log('Current Timers ' + this.timerId);
+  }
+
+  stopTimer() {
+    if (this.timerId) {
+      console.log(this.timerId + ' timer stopped');
+      console.log(this.timer.getTimer());
+      this.timer.unsubscribe(this.timerId);
+      this.timerId = undefined;
+      this.counter = 0;
+
+      if (this.completeMessage !== undefined)
+        this.timedDisplay = this.completeMessage;
+    }
   }
 
   getFormat = function () {
@@ -74,14 +93,10 @@ export class ClockTimerComponent implements OnInit {
 
     this.getFormat();
 
-    if (this.counter <= 0) {
-      this.timer.unsubscribe(this.timerId);
-      this.timerId = undefined;
-      this.timer.delTimer('1sec');
+    if (this.counter < 0) {
+      this.stopTimer();
 
-      if (this.completeMessage !== undefined)
-        this.timedDisplay = this.completeMessage;
-
+      console.log('Timer Finsihed');
       this.complete.emit({});
     }
   }

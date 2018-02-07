@@ -21,8 +21,8 @@ export class QuizComponent implements OnInit {
   config: QuizConfig = new QuizConfig({});
   // quizCount: number = 0;
   // countDown: number;
-  timer = 60;
-  quizSize = 5;
+  timer = 20;
+  quizSize = 10;
   isStarted: boolean = false;
   currTab: string = 'settings';
   isSubmitted: boolean = false;
@@ -145,6 +145,7 @@ export class QuizComponent implements OnInit {
   }
 
   submitQuiz() {
+    console.log('Quiz Submitted');
     this.currTab = 'review';
     this.isSubmitted = true;
     this.quiz.questions.forEach(question => {

@@ -15,7 +15,7 @@ export class AppComponent {
   counterChanged: Subject<any> = new Subject();
 
   notifyChildren() {
-    this.counterChanged.next('fired');
+    this.counterChanged.next(this.timerInSecs);
   }
 
   timerEnded: Subject<any> = new Subject();
